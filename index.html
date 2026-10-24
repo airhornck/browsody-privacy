@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browsody Privacy Policy / 隐私政策</title>
+<style>
+body{font-family:-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;max-width:760px;margin:0 auto;padding:40px 24px;color:#1e293b;background:#f8fafc;line-height:1.7}
+h1{color:#0f172a;border-bottom:2px solid #6366f1;padding-bottom:8px}
+h2{color:#334155;margin-top:2em}
+table{border-collapse:collapse;width:100%;margin:1em 0;background:#fff}
+th,td{border:1px solid #e2e8f0;padding:8px 12px;text-align:left;font-size:14px}
+th{background:#f1f5f9}
+code{background:#eef2ff;padding:1px 5px;border-radius:4px;font-size:13px}
+hr{border:none;border-top:1px solid #e2e8f0;margin:2em 0}
+</style>
+</head>
+<body>
+<h1>Browsody 隐私政策</h1>
+<p><strong>生效日期：</strong> 2026 年 7 月 13 日</p>
+<p><strong>最后更新：</strong> 2026 年 10 月 24 日</p>
+<hr>
+<h2>1. 引言</h2>
+<p>Browsody（&quot;我们&quot;、&quot;本扩展&quot;）是一款 AI 驱动的个人浏览年鉴工具。我们高度重视您的隐私。<strong>本扩展采用本地优先（local-first）架构</strong>：您的浏览数据默认只存储在您的浏览器本地，我们不会收集、上传或出售您的个人数据。</p>
+<p>本隐私政策解释本扩展如何处理您的信息，以及您对自己的数据拥有哪些权利。</p>
+<h2>2. 我们收集哪些数据</h2>
+<p>Browsody 仅在您的浏览器本地收集和处理以下信息：</p>
+<ul>
+<li><strong>浏览记录</strong>：您访问的网页 URL、页面标题、域名、访问时长、访问时间</li>
+<li><strong>分类统计</strong>：基于 URL/标题自动归类的时间分布（如工作、学习、娱乐等）</li>
+<li><strong>每日统计</strong>：浏览总时长、热门站点、专注度评分等汇总数据</li>
+<li><strong>AI 洞察</strong>：由 AI 生成的每日浏览总结文本</li>
+<li><strong>用户设置</strong>：分类规则、忽略域名、数据保留期限、AI 模型偏好、您自行配置的 API Key（仅存储在本地）等</li>
+</ul>
+<p><strong>我们不会收集</strong>：</p>
+<ul>
+<li>您的姓名、邮箱、账号信息</li>
+<li>网页内容、密码、表单输入、Cookie</li>
+<li>付款信息</li>
+</ul>
+<h2>3. 数据存储位置</h2>
+<p>所有数据均存储在您的浏览器 <strong>IndexedDB</strong> 和 <strong>chrome.storage.local</strong> 中，<strong>不会上传到我们的服务器</strong>。</p>
+<p>您随时可以在扩展的&quot;隐私&quot;或&quot;设置&quot;页面：</p>
+<ul>
+<li>导出所有数据为 JSON 文件</li>
+<li>一键彻底删除所有本地数据</li>
+</ul>
+<h2>4. AI 功能与数据去向</h2>
+<p>Browsody 按以下优先级生成 AI 洞察：</p>
+<h3>4.1 本地 Gemini Nano（默认）</h3>
+<p>在支持的 Chrome 浏览器（Chrome 148+）中，AI 模型直接在您的设备上运行，<strong>任何数据都不会离开您的电脑</strong>。</p>
+<h3>4.2 用户自有 API Key（BYOK）</h3>
+<p>您可以在设置中配置自己的 DeepSeek API Key。此时，<strong>当日浏览的脱敏聚合摘要</strong>（总时长、站点域名、各分类时长，不含完整 URL 与页面内容）会从您的浏览器<strong>直接发送至 DeepSeek API</strong> 以生成总结，传输过程遵循 DeepSeek 的隐私政策。Browsody 开发者不运营任何 AI 服务、不接触您的数据与 API Key。</p>
+<h3>4.3 本地模板兜底</h3>
+<p>无可用 AI 模型时，扩展在本地生成纯模板化的统计摘要，不发生任何网络传输。</p>
+<h2>5. 权限说明</h2>
+<p>本扩展请求以下权限，均用于实现核心功能：</p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tabs</code></td>
+<td>监听活动标签页变化，计算访问时长（不读取页面内容、不注入脚本）</td>
+</tr>
+<tr>
+<td><code>storage</code></td>
+<td>存储用户设置与试用状态</td>
+</tr>
+<tr>
+<td><code>unlimitedStorage</code></td>
+<td>在本地 IndexedDB 持久化浏览记录与统计数据（数据仅存本地）</td>
+</tr>
+<tr>
+<td><code>idle</code></td>
+<td>检测用户空闲/锁定状态，暂停计时，避免挂机时间被计入</td>
+</tr>
+<tr>
+<td><code>alarms</code></td>
+<td>定时生成每日洞察与清理过期数据</td>
+</tr>
+<tr>
+<td><code>host_permissions</code>（仅 <code>api.deepseek.com</code>）</td>
+<td>仅当您主动配置自己的 DeepSeek API Key 并选择云端生成时，向该端点发送脱敏聚合摘要</td>
+</tr>
+</tbody></table>
+<h2>6. 数据分享</h2>
+<p>我们不会向任何第三方出售、出租或共享您的个人数据。仅在以下情形发生数据传输：</p>
+<ul>
+<li>您主动启用云端 AI（BYOK）时，脱敏聚合摘要直接传输至您自行配置的 AI 服务商；</li>
+<li>您主动点击&quot;导出数据&quot;时，数据以 JSON/Markdown 文件保存到您的本地设备。</li>
+</ul>
+<h2>7. 您的权利</h2>
+<p>根据 GDPR 等数据保护法规，您拥有以下权利：</p>
+<ul>
+<li><strong>知情权</strong>：本政策已说明全部数据处理活动；</li>
+<li><strong>访问权</strong>：随时在扩展内查看自己的全部数据；</li>
+<li><strong>导出权</strong>：一键导出 JSON 格式的完整数据；</li>
+<li><strong>删除权</strong>：一键清除所有本地数据；</li>
+<li><strong>撤回同意权</strong>：卸载扩展即可停止所有数据收集。</li>
+</ul>
+<h2>8. 未成年人</h2>
+<p>本扩展不面向 13 岁以下未成年人。如果您发现未成年人向我们提供了个人信息，请联系我们删除。</p>
+<h2>9. 政策更新</h2>
+<p>我们可能会不时更新本隐私政策。更新后的政策将在扩展商店页面和本文件中公布。</p>
+<h2>10. 联系我们</h2>
+<p>如有任何隐私相关问题，请通过以下方式联系我们：</p>
+<ul>
+<li><strong>开发者邮箱</strong>：<a href="mailto:bambooluk@gmail.com">bambooluk@gmail.com</a></li>
+<li><strong>支持页面</strong>：<a href="mailto:bambooluk@gmail.com">bambooluk@gmail.com</a>（邮件反馈）</li>
+</ul>
+<hr>
+<p><strong>感谢您信任 Browsody。您的数据，始终由您掌控。</strong></p>
+
+</body></html>
